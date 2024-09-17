@@ -33,3 +33,18 @@ ssortRec list res = ssortRec nlista nres
     where
         nres = maximum list : res
         nlista = remove list (maximum list)
+
+merge :: [Int] -> [Int] -> [Int]
+merge [] list = list
+merge list [] = list
+merge (x1 : list1) (x2: list2)
+    | x1 < x2 = x1 : merge list1 (x2:list2)
+    | otherwise = x2 : merge list2 (x1:list1)
+
+msort :: [Int] -> [Int]
+msort[] = []
+msort [x] = [x]
+msort list = merge (msort left) (msort right)
+    where
+        left = take (div (length list) 2) list
+        right = drop (div (length list) 2) list    
