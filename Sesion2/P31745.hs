@@ -14,3 +14,4 @@ countIn list x = map (myCount x) list                   --Como map aplica a cada
 
 firstWord :: String -> String
 firstWord s = takeWhile (/= ' ') (dropWhile (==' ') s)      --Primero borra todos los espacios de delante y luego elimina todo lo que venga despues del espacio de la primera palabra
+--a
