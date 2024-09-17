@@ -48,3 +48,19 @@ msort list = merge (msort left) (msort right)
     where
         left = take (div (length list) 2) list
         right = drop (div (length list) 2) list    
+
+qsort :: [Int] -> [Int]
+qsort []     = []
+qsort (p:xs) = (qsort menors) ++ [p] ++ (qsort majors)
+    where
+        menors = [x | x <- xs, x <  p]
+        majors = [x | x <- xs, x >= p]
+
+-----------------------------------------------------------------
+
+genQsort :: Ord a => [a] -> [a]
+genQsort []     = []
+genQsort (p:xs) = (genQsort menors) ++ [p] ++ (genQsort majors)
+    where
+        menors = [x | x <- xs, x <  p]
+        majors = [x | x <- xs, x >= p]
